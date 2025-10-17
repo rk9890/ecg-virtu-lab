@@ -45,21 +45,26 @@ const Lab = () => {
   const allElectrodesPlaced = Object.values(electrodesPlaced).every((placed) => placed);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5">
       {/* Header */}
-      <header className="border-b border-border bg-card shadow-sm sticky top-0 z-50">
+      <header className="border-b border-border/50 glass-panel shadow-lg sticky top-0 z-50 backdrop-blur-xl">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <FlaskConical className="h-6 w-6 text-white" />
+            <div className="flex items-center gap-4">
+              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg glow-effect transform hover:scale-110 transition-all duration-300">
+                <FlaskConical className="h-7 w-7 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-foreground">Bio-Medical Instrumentation Lab</h1>
-                <p className="text-sm text-muted-foreground">Virtual Laboratory Environment</p>
+                <h1 className="text-2xl font-bold text-foreground bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  Bio-Medical Instrumentation Lab
+                </h1>
+                <p className="text-sm text-muted-foreground flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-success animate-pulse"></span>
+                  Virtual Laboratory Environment
+                </p>
               </div>
             </div>
-            <Badge variant="secondary" className="text-sm">
+            <Badge variant="secondary" className="text-sm shadow-md hover:shadow-lg transition-shadow">
               Experiment 3
             </Badge>
           </div>
@@ -68,47 +73,75 @@ const Lab = () => {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
-        <div className="mb-6">
-          <h2 className="text-3xl font-bold text-foreground mb-2">
-            Monitoring of Electrocardiogram (ECG) for Augmented Leads
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            aVL, aVF and aVR Lead Analysis
+        <div className="mb-8 slide-in-up">
+          <div className="relative">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-3 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+              Monitoring of Electrocardiogram (ECG) for Augmented Leads
+            </h2>
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 blur-2xl -z-10 opacity-50"></div>
+          </div>
+          <p className="text-lg text-muted-foreground mt-2 flex items-center gap-2">
+            <span className="px-3 py-1 bg-primary/10 rounded-full text-primary font-medium">aVL</span>
+            <span className="px-3 py-1 bg-accent/10 rounded-full text-accent font-medium">aVF</span>
+            <span className="px-3 py-1 bg-destructive/10 rounded-full text-destructive font-medium">aVR</span>
+            Lead Analysis
           </p>
         </div>
 
         <Tabs defaultValue="simulator" className="space-y-6">
-          <TabsList className="grid w-full max-w-2xl grid-cols-4">
-            <TabsTrigger value="simulator">
+          <TabsList className="grid w-full max-w-2xl grid-cols-4 glass-panel p-1.5 shadow-lg">
+            <TabsTrigger 
+              value="simulator" 
+              className="data-[state=active]:bg-gradient-to-br data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300"
+            >
               <FlaskConical className="h-4 w-4 mr-2" />
               Simulator
             </TabsTrigger>
-            <TabsTrigger value="theory">
+            <TabsTrigger 
+              value="theory"
+              className="data-[state=active]:bg-gradient-to-br data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300"
+            >
               <BookOpen className="h-4 w-4 mr-2" />
               Theory
             </TabsTrigger>
-            <TabsTrigger value="procedure">Procedure</TabsTrigger>
-            <TabsTrigger value="observations">Observations</TabsTrigger>
+            <TabsTrigger 
+              value="procedure"
+              className="data-[state=active]:bg-gradient-to-br data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300"
+            >
+              Procedure
+            </TabsTrigger>
+            <TabsTrigger 
+              value="observations"
+              className="data-[state=active]:bg-gradient-to-br data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300"
+            >
+              Observations
+            </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="simulator" className="space-y-6">
+          <TabsContent value="simulator" className="space-y-6 slide-in-up">
             {/* Control Panel */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Simulation Controls</CardTitle>
+            <Card className="glass-panel shadow-xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300">
+              <CardHeader className="border-b border-primary/10 bg-gradient-to-r from-primary/5 to-accent/5">
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                    <Play className="h-4 w-4 text-white" />
+                  </div>
+                  Simulation Controls
+                </CardTitle>
                 <CardDescription>
                   Place electrodes and control the ECG simulation
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="flex items-center gap-4">
+              <CardContent className="pt-6">
+                <div className="flex flex-wrap items-center gap-4">
                   <Button
                     onClick={handleStartSimulation}
                     disabled={isSimulating || !allElectrodesPlaced}
                     variant="default"
                     size="lg"
+                    className="bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:scale-105 transition-all duration-300 shadow-md"
                   >
-                    <Play className="h-4 w-4 mr-2" />
+                    <Play className="h-5 w-5 mr-2" />
                     Start Simulation
                   </Button>
                   <Button
@@ -116,31 +149,33 @@ const Lab = () => {
                     disabled={!isSimulating}
                     variant="secondary"
                     size="lg"
+                    className="hover:scale-105 transition-all duration-300 shadow-md"
                   >
-                    <Pause className="h-4 w-4 mr-2" />
+                    <Pause className="h-5 w-5 mr-2" />
                     Pause
                   </Button>
                   <Button
                     onClick={handleReset}
                     variant="outline"
                     size="lg"
+                    className="hover:bg-destructive/10 hover:border-destructive hover:scale-105 transition-all duration-300 shadow-md"
                   >
-                    <RotateCcw className="h-4 w-4 mr-2" />
+                    <RotateCcw className="h-5 w-5 mr-2" />
                     Reset
                   </Button>
                   <Separator orientation="vertical" className="h-10" />
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-4 glass-panel px-4 py-2 rounded-lg">
                     <div className="flex items-center gap-2">
-                      <div className={`h-3 w-3 rounded-full ${electrodesPlaced.RA ? 'bg-success' : 'bg-muted'}`} />
-                      <span className="text-sm">RA</span>
+                      <div className={`h-4 w-4 rounded-full ${electrodesPlaced.RA ? 'bg-success pulse-glow' : 'bg-muted'} transition-all duration-300`} />
+                      <span className="text-sm font-medium">RA</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className={`h-3 w-3 rounded-full ${electrodesPlaced.LA ? 'bg-success' : 'bg-muted'}`} />
-                      <span className="text-sm">LA</span>
+                      <div className={`h-4 w-4 rounded-full ${electrodesPlaced.LA ? 'bg-success pulse-glow' : 'bg-muted'} transition-all duration-300`} />
+                      <span className="text-sm font-medium">LA</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className={`h-3 w-3 rounded-full ${electrodesPlaced.LL ? 'bg-success' : 'bg-muted'}`} />
-                      <span className="text-sm">LL</span>
+                      <div className={`h-4 w-4 rounded-full ${electrodesPlaced.LL ? 'bg-success pulse-glow' : 'bg-muted'} transition-all duration-300`} />
+                      <span className="text-sm font-medium">LL</span>
                     </div>
                   </div>
                 </div>

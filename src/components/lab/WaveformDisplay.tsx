@@ -140,60 +140,66 @@ export const WaveformDisplay = ({ isSimulating }: WaveformDisplayProps) => {
   }, [isSimulating]);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>ECG Waveform Display</CardTitle>
+    <Card className="glass-panel shadow-xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300">
+      <CardHeader className="border-b border-primary/10 bg-gradient-to-r from-primary/5 to-accent/5">
+        <CardTitle className="text-2xl flex items-center gap-2">
+          <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+            <span className="text-white text-sm">📊</span>
+          </div>
+          ECG Waveform Display
+        </CardTitle>
         <CardDescription>
           Real-time augmented lead recordings
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-6 pt-6">
         {/* aVR Lead */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <Badge variant="outline" className="bg-red-50 text-red-600 border-red-200">
+        <div className="space-y-3 slide-in-up">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <Badge variant="outline" className="bg-gradient-to-r from-red-50 to-red-100 text-red-700 border-red-300 shadow-md px-4 py-1.5 text-sm font-semibold">
               Lead aVR (Augmented Vector Right)
             </Badge>
-            <span className="text-xs text-muted-foreground">aVR = -(I + II)/2</span>
+            <span className="text-xs text-muted-foreground glass-panel px-3 py-1 rounded-full font-mono">aVR = -(I + II)/2</span>
           </div>
           <canvas
             ref={canvasRefs.aVR}
-            className="w-full border-2 border-border rounded-lg bg-blue-50"
+            className="w-full border-2 border-red-200 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 shadow-inner hover:shadow-lg transition-shadow duration-300"
           />
         </div>
 
         {/* aVL Lead */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <Badge variant="outline" className="bg-blue-50 text-blue-600 border-blue-200">
+        <div className="space-y-3 slide-in-up" style={{ animationDelay: '0.1s' }}>
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <Badge variant="outline" className="bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 border-blue-300 shadow-md px-4 py-1.5 text-sm font-semibold">
               Lead aVL (Augmented Vector Left)
             </Badge>
-            <span className="text-xs text-muted-foreground">aVL = I - II/2</span>
+            <span className="text-xs text-muted-foreground glass-panel px-3 py-1 rounded-full font-mono">aVL = I - II/2</span>
           </div>
           <canvas
             ref={canvasRefs.aVL}
-            className="w-full border-2 border-border rounded-lg bg-blue-50"
+            className="w-full border-2 border-blue-200 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 shadow-inner hover:shadow-lg transition-shadow duration-300"
           />
         </div>
 
         {/* aVF Lead */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <Badge variant="outline" className="bg-blue-50 text-blue-600 border-blue-200">
+        <div className="space-y-3 slide-in-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <Badge variant="outline" className="bg-gradient-to-r from-green-50 to-green-100 text-green-700 border-green-300 shadow-md px-4 py-1.5 text-sm font-semibold">
               Lead aVF (Augmented Vector Foot)
             </Badge>
-            <span className="text-xs text-muted-foreground">aVF = II - I/2</span>
+            <span className="text-xs text-muted-foreground glass-panel px-3 py-1 rounded-full font-mono">aVF = II - I/2</span>
           </div>
           <canvas
             ref={canvasRefs.aVF}
-            className="w-full border-2 border-border rounded-lg bg-blue-50"
+            className="w-full border-2 border-green-200 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 shadow-inner hover:shadow-lg transition-shadow duration-300"
           />
         </div>
 
         {!isSimulating && (
-          <div className="flex items-center justify-center p-8 bg-muted/50 rounded-lg">
-            <p className="text-sm text-muted-foreground">
-              Place all electrodes and click "Start Simulation" to view waveforms
+          <div className="flex items-center justify-center p-8 glass-panel rounded-xl border-2 border-dashed border-primary/30">
+            <p className="text-sm text-muted-foreground flex items-center gap-2">
+              <span className="animate-pulse">⏸️</span>
+              Place all electrodes and click <strong className="text-primary">"Start Simulation"</strong> to view waveforms
             </p>
           </div>
         )}
