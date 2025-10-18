@@ -19,9 +19,9 @@ concurrency:
 jobs:
   # Build job
   build:
-    runs-on: ubuntu-latest    
-    steps:                    
-      - name: Checkout        
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
         uses: actions/checkout@v4
       
       # Step 1: Set up Node.js (needed to run npm/yarn)
@@ -39,11 +39,12 @@ jobs:
         run: npm run build
       
       # Step 4: Configure GitHub Pages deployment path
-     - name: Setup Pages
-  uses: actions/configure-pages@v5
-  with:
-    # Tell GitHub that your final static files are in the 'dist' directory
-    static_site_generator: custom
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          # Tell GitHub that your final static files are in the 'dist' directory
+          static_site_generator: custom
+          publish_dir: ./dist 
 
       # Step 5: Upload the built files as an artifact
       - name: Upload artifact
