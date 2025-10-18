@@ -39,12 +39,11 @@ jobs:
         run: npm run build
       
       # Step 4: Configure GitHub Pages deployment path
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          # Tell GitHub that your final static files are in the 'dist' directory
-          static_site_generator: custom
-          publish_dir: ./dist 
+     - name: Setup Pages
+  uses: actions/configure-pages@v5
+  with:
+    # Tell GitHub that your final static files are in the 'dist' directory
+    static_site_generator: custom
 
       # Step 5: Upload the built files as an artifact
       - name: Upload artifact
