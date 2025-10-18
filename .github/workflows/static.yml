@@ -19,9 +19,9 @@ concurrency:
 jobs:
   # Build job
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
+    runs-on: ubuntu-latest    
+    steps:                    
+      - name: Checkout        
         uses: actions/checkout@v4
       
       # Step 1: Set up Node.js (needed to run npm/yarn)
