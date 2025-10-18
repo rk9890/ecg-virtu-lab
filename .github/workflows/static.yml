@@ -17,30 +17,33 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  build: # <--- 2 SPACES
+    runs-on: ubuntu-latest # <--- 4 SPACES
+    steps: # <--- 4 SPACES
+      - name: Checkout # <--- 6 SPACES
+        uses: actions/checkout@v4 # <--- 8 SPACES
 
-      - name: Set up Node.js 
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      # ... (This is where the error is likely on the next few steps)
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Set up Node.js # <--- 6 SPACES
+        uses: actions/setup-node@v4 # <--- 8 SPACES
+        with: # <--- 8 SPACES
+          node-version: '20' # <--- 10 SPACES
 
-      - name: Build project
-        run: npm run build
+      - name: Install dependencies # <--- 6 SPACES
+        run: npm ci # <--- 8 SPACES
 
+      - name: Build project # <--- 6 SPACES
+        run: npm run build # <--- 8 SPACES
+
+      # ... rest of the file
+      
       # Step 4: Configure GitHub Pages deployment path
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          # Tell GitHub that your final static files are in the 'dist' directory
-          static_site_generator: custom
+     - name: Setup Pages
+  uses: actions/configure-pages@v5
+  with:
+    # Tell GitHub that your final static files are in the 'dist' directory
+    static_site_generator: custom
 
       # Step 5: Upload the built files as an artifact
       - name: Upload artifact
