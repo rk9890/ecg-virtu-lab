@@ -28,9 +28,9 @@ jobs:
         with:
           node-version: '20' 
       
-      # *** THIS LINE IS THE FIX FOR THE INSTALLATION ERROR ***
+      # *** FIX: Using standard NPM install to solve package permission/loading errors ***
       - name: Install dependencies
-        run: npm install --legacy-peer-deps 
+        run: npm install --force # Forces npm to install all dependencies cleanly
       
       - name: Build project
         run: npm run build
