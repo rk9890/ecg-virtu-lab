@@ -1,18 +1,21 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { componentTagger } from "lovable-tagger";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path' // Path import is needed for resolve alias
+import componentTagger from 'lovable-tagger' // Component tagger import
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // ⚠️ FINAL FIX: Set the base path to the repository name for GitHub Pages deployment.
+  // The repository name is 'ecg-virtu-lab', which is required for sub-folder hosting.
+  base: '/ecg-virtu-lab/', 
   server: {
-    host: "::",
+    host: '::',
     port: 8080,
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [react(), mode === 'development' && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
-}));
+}))
