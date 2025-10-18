@@ -99,79 +99,49 @@ const Index = () => {
                   </DialogDescription>
                 </DialogHeader>
                 <div className="space-y-6 mt-4">
-                  {/* aVR Lead Connection */}
+                  {/* Augmented Leads Placement */}
+                  <Card className="border-2 border-primary/20">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <span className="px-3 py-1 bg-primary/10 text-primary rounded-lg font-bold text-sm">All Leads</span>
+                        How To Place Augmented Limb Leads in ECG
+                      </CardTitle>
+                      <CardDescription>
+                        Complete guide on placing augmented limb leads (aVR, aVL, aVF)
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <iframe
+                          width="100%"
+                          height="100%"
+                          src="https://www.youtube.com/embed/sMaAxv5uy8A"
+                          title="How To Place Augmented Limb Leads In ECG"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="w-full h-full"
+                        ></iframe>
+                      </div>
+                      <div className="mt-4 p-4 bg-muted/50 rounded-lg">
+                        <p className="text-sm text-muted-foreground">
+                          <strong>Key Points:</strong> Essential guide for proper electrode placement and understanding augmented leads configuration
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* ECG Augmented Limb Leads Theory */}
                   <Card className="border-2 border-primary/20">
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <span className="px-3 py-1 bg-destructive/10 text-destructive rounded-lg font-bold text-sm">aVR</span>
-                        Right Arm Augmented Lead Connection
-                      </CardTitle>
-                      <CardDescription>
-                        Learn how to properly connect and record aVR lead (augmented Vector Right)
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <iframe
-                          width="100%"
-                          height="100%"
-                          src="https://www.youtube.com/embed/RYZ4daPDChE"
-                          title="ECG aVR Lead"
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="w-full h-full"
-                        ></iframe>
-                      </div>
-                      <div className="mt-4 p-4 bg-muted/50 rounded-lg">
-                        <p className="text-sm text-muted-foreground">
-                          <strong>Key Points:</strong> aVR = -(LA + LL)/2, typically shows negative deflection
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* aVL Lead Connection */}
-                  <Card className="border-2 border-primary/20">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
                         <span className="px-3 py-1 bg-primary/10 text-primary rounded-lg font-bold text-sm">aVL</span>
-                        Left Arm Augmented Lead Connection
-                      </CardTitle>
-                      <CardDescription>
-                        Understand the setup and recording process for aVL lead (augmented Vector Left)
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
-                        <iframe
-                          width="100%"
-                          height="100%"
-                          src="https://www.youtube.com/embed/bpHUsGqOjnw"
-                          title="ECG aVL Lead"
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="w-full h-full"
-                        ></iframe>
-                      </div>
-                      <div className="mt-4 p-4 bg-muted/50 rounded-lg">
-                        <p className="text-sm text-muted-foreground">
-                          <strong>Key Points:</strong> aVL = LA - (RA + LL)/2, shows positive deflection in normal rhythm
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* aVF Lead Connection */}
-                  <Card className="border-2 border-primary/20">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
                         <span className="px-3 py-1 bg-accent/10 text-accent rounded-lg font-bold text-sm">aVF</span>
-                        Left Foot Augmented Lead Connection
+                        ECG Augmented Limb Leads Theory
                       </CardTitle>
                       <CardDescription>
-                        Master the connection technique for aVF lead (augmented Vector Foot)
+                        Understanding the theoretical foundation of aVR, aVL, and aVF leads
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -179,8 +149,8 @@ const Index = () => {
                         <iframe
                           width="100%"
                           height="100%"
-                          src="https://www.youtube.com/embed/Z7XklP7iBmw"
-                          title="ECG aVF Lead"
+                          src="https://www.youtube.com/embed/1rSpcK50aIg"
+                          title="ECG: The augmented limb leads aVF, aVR and aVL"
                           frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
@@ -189,21 +159,21 @@ const Index = () => {
                       </div>
                       <div className="mt-4 p-4 bg-muted/50 rounded-lg">
                         <p className="text-sm text-muted-foreground">
-                          <strong>Key Points:</strong> aVF = LL - (RA + LA)/2, shows positive deflection in normal rhythm
+                          <strong>Key Points:</strong> Comprehensive explanation of how augmented leads are derived and their clinical significance
                         </p>
                       </div>
                     </CardContent>
                   </Card>
 
-                  {/* Complete Overview */}
-                  <Card className="border-2 border-accent/20 bg-gradient-to-br from-primary/5 to-accent/5">
+                  {/* Connection Technique */}
+                  <Card className="border-2 border-primary/20">
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <Activity className="h-5 w-5 text-accent" />
-                        Complete ECG Lead System Overview
+                        Augmented Limb Leads Connection Technique
                       </CardTitle>
                       <CardDescription>
-                        Comprehensive guide to all ECG leads including augmented leads
+                        Detailed demonstration of positive and negative electrode connections
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -211,8 +181,40 @@ const Index = () => {
                         <iframe
                           width="100%"
                           height="100%"
-                          src="https://www.youtube.com/embed/RnJMFSq_6QI"
-                          title="Complete ECG Leads"
+                          src="https://www.youtube.com/embed/aVNDKkfNsfk"
+                          title="Augmented limb leads; Connection of positive and negative electrode"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="w-full h-full"
+                        ></iframe>
+                      </div>
+                      <div className="mt-4 p-4 bg-muted/50 rounded-lg">
+                        <p className="text-sm text-muted-foreground">
+                          <strong>Key Points:</strong> Step-by-step electrode connection for accurate augmented lead recordings
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* 12 Lead ECG Animation */}
+                  <Card className="border-2 border-accent/20 bg-gradient-to-br from-primary/5 to-accent/5">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Video className="h-5 w-5 text-accent" />
+                        12 Lead ECG Explained - Complete Animation
+                      </CardTitle>
+                      <CardDescription>
+                        Visual animation explaining the complete 12-lead ECG system
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <iframe
+                          width="100%"
+                          height="100%"
+                          src="https://www.youtube.com/embed/kwLbSx9BNbU"
+                          title="12 Lead ECG Explained, Animation"
                           frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
@@ -221,7 +223,39 @@ const Index = () => {
                       </div>
                       <div className="mt-4 p-4 bg-accent/10 rounded-lg border border-accent/20">
                         <p className="text-sm text-muted-foreground">
-                          <strong>Overview:</strong> This video covers the complete 12-lead ECG system, with special focus on limb leads and their augmented counterparts
+                          <strong>Overview:</strong> Detailed animated explanation of all 12 ECG leads including limb and augmented leads
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* ECG Leads Fundamentals */}
+                  <Card className="border-2 border-primary/20">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Brain className="h-5 w-5 text-primary" />
+                        ECG Leads Explained - Fundamentals
+                      </CardTitle>
+                      <CardDescription>
+                        Understanding how ECG electrodes and leads work
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-lg">
+                        <iframe
+                          width="100%"
+                          height="100%"
+                          src="https://www.youtube.com/embed/xWZo4XRcK58"
+                          title="ECG Leads Explained"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="w-full h-full"
+                        ></iframe>
+                      </div>
+                      <div className="mt-4 p-4 bg-muted/50 rounded-lg">
+                        <p className="text-sm text-muted-foreground">
+                          <strong>Key Points:</strong> Foundational concepts of ECG technology and lead configurations
                         </p>
                       </div>
                     </CardContent>
