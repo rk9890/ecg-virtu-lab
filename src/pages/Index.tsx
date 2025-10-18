@@ -1,176 +1,268 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useNavigate } from "react-router-dom";
-import { FlaskConical, BookOpen, GraduationCap, ArrowRight } from "lucide-react";
+import { FlaskConical, ArrowRight, BookOpen, Target, Zap, Activity, Brain, Users, Award, Clock, CheckCircle2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
-  const navigate = useNavigate();
+  const stats = [
+    { icon: Activity, label: "ECG Leads", value: "3", color: "from-primary to-accent" },
+    { icon: Brain, label: "Learning Modules", value: "4", color: "from-accent to-primary" },
+    { icon: Clock, label: "Avg. Duration", value: "45m", color: "from-primary to-accent" },
+    { icon: Award, label: "Success Rate", value: "98%", color: "from-accent to-primary" },
+  ];
+
+  const features = [
+    {
+      icon: Target,
+      title: "Precision Simulation",
+      description: "Real-time ECG waveform generation with accurate augmented lead calculations",
+      gradient: "from-primary/20 to-accent/20"
+    },
+    {
+      icon: Zap,
+      title: "Interactive Learning",
+      description: "Hands-on electrode placement with instant visual feedback",
+      gradient: "from-accent/20 to-primary/20"
+    },
+    {
+      icon: BookOpen,
+      title: "Comprehensive Theory",
+      description: "In-depth coverage of ECG principles and clinical applications",
+      gradient: "from-primary/20 to-accent/20"
+    },
+    {
+      icon: Users,
+      title: "Self-Paced",
+      description: "Learn at your own speed with unlimited practice sessions",
+      gradient: "from-accent/20 to-primary/20"
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/5 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-3xl"></div>
+      </div>
+
       {/* Hero Section */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center gap-3">
-            <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg">
-              <FlaskConical className="h-7 w-7 text-white" />
+      <header className="container mx-auto px-4 pt-20 pb-16 relative z-10">
+        <div className="flex flex-col items-center text-center space-y-8 slide-in-up">
+          <div className="relative">
+            <div className="h-24 w-24 rounded-3xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-2xl glow-effect float-animation">
+              <FlaskConical className="h-12 w-12 text-white" />
             </div>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">Virtual Lab</h1>
-              <p className="text-sm text-muted-foreground">Bio-Medical Instrumentation</p>
-            </div>
+            <div className="absolute -inset-6 bg-gradient-to-r from-primary/30 to-accent/30 blur-3xl -z-10 animate-pulse"></div>
+          </div>
+          
+          <div className="space-y-6 max-w-4xl">
+            <Badge variant="secondary" className="text-sm px-6 py-2 shadow-lg hover:shadow-xl transition-all hover:scale-105">
+              <span className="h-2 w-2 rounded-full bg-success animate-pulse mr-2"></span>
+              Experiment 3 - Bio-Medical Instrumentation
+            </Badge>
+            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
+              Virtual ECG Laboratory
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Master the art of Electrocardiogram monitoring for augmented leads through interactive simulation and real-time feedback
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link to="/lab">
+              <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg px-10 py-7 shadow-xl glow-effect">
+                Start Lab Experience
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Button size="lg" variant="outline" className="text-lg px-10 py-7 border-2 hover:bg-primary/5 hover:border-primary transition-all duration-300">
+              View Demo
+            </Button>
           </div>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-12">
-        <div className="max-w-6xl mx-auto space-y-12">
-          {/* Welcome Section */}
-          <div className="text-center space-y-4">
-            <Badge variant="secondary" className="mb-2">
-              Experiment 3
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              ECG Augmented Leads Laboratory
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Interactive virtual environment for learning and practicing ECG monitoring 
-              for augmented leads aVL, aVF, and aVR
-            </p>
-          </div>
+      {/* Stats Section */}
+      <section className="container mx-auto px-4 py-12 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {stats.map((stat, index) => (
+            <Card 
+              key={index} 
+              className="glass-panel border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-xl group"
+            >
+              <CardContent className="pt-6 text-center space-y-3">
+                <div className={`h-14 w-14 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all group-hover:scale-110`}>
+                  <stat.icon className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">{stat.value}</p>
+                  <p className="text-sm text-muted-foreground font-medium">{stat.label}</p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
 
-          {/* Main Card */}
-          <Card className="border-2 shadow-xl">
-            <CardHeader className="text-center pb-6">
+      {/* Features Grid */}
+      <section className="container mx-auto px-4 py-16 relative z-10">
+        <div className="text-center mb-12 space-y-4">
+          <Badge variant="outline" className="text-sm px-4 py-1">Key Features</Badge>
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Why Choose Our Virtual Lab?
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Experience cutting-edge simulation technology designed for medical students
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {features.map((feature, index) => (
+            <Card 
+              key={index}
+              className="glass-panel border-2 border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 group overflow-hidden relative"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+              <CardHeader className="relative z-10">
+                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4 shadow-lg group-hover:shadow-xl transition-all group-hover:scale-110 group-hover:rotate-3">
+                  <feature.icon className="h-7 w-7 text-white" />
+                </div>
+                <CardTitle className="text-xl">{feature.title}</CardTitle>
+                <CardDescription className="text-base">
+                  {feature.description}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Main Content Cards */}
+      <main className="container mx-auto px-4 pb-20 relative z-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Experiment Overview */}
+          <Card className="glass-panel shadow-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 group overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <CardHeader className="relative z-10">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4 shadow-lg group-hover:shadow-xl transition-all group-hover:scale-110 glow-effect">
+                <FlaskConical className="h-7 w-7 text-white" />
+              </div>
               <CardTitle className="text-2xl">Experiment Overview</CardTitle>
               <CardDescription className="text-base">
-                Monitoring of Electrocardiogram (ECG) for Augmented Leads
+                Learn about ECG monitoring and augmented leads
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-8">
-              {/* Features Grid */}
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="flex flex-col items-center text-center p-6 bg-primary/5 rounded-lg border border-primary/10">
-                  <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <FlaskConical className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">Interactive Simulation</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Place electrodes and observe real-time ECG waveforms for all three augmented leads
-                  </p>
-                </div>
-
-                <div className="flex flex-col items-center text-center p-6 bg-accent/5 rounded-lg border border-accent/10">
-                  <div className="h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
-                    <BookOpen className="h-8 w-8 text-accent" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">Comprehensive Theory</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Learn the principles behind augmented leads and their clinical significance
-                  </p>
-                </div>
-
-                <div className="flex flex-col items-center text-center p-6 bg-success/5 rounded-lg border border-success/10">
-                  <div className="h-16 w-16 rounded-full bg-success/10 flex items-center justify-center mb-4">
-                    <GraduationCap className="h-8 w-8 text-success" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">Step-by-Step Procedure</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Follow detailed instructions for proper electrode placement and ECG recording
-                  </p>
-                </div>
-              </div>
-
-              {/* Learning Objectives */}
-              <div className="bg-muted/30 rounded-lg p-6 space-y-4">
-                <h3 className="font-semibold text-lg">Learning Objectives</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">✓</span>
-                    <span>Understand the concept of augmented limb leads (aVR, aVL, aVF)</span>
+            <CardContent className="space-y-4 relative z-10">
+              <div className="space-y-3">
+                <h3 className="font-semibold text-lg flex items-center gap-2">
+                  <Zap className="h-5 w-5 text-primary" />
+                  What You'll Monitor
+                </h3>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-start gap-3 group/item hover:translate-x-1 transition-transform">
+                    <span className="px-3 py-1 bg-primary/10 text-primary rounded-lg font-semibold shadow-sm group-hover/item:shadow-md transition-shadow">aVR</span>
+                    <span className="text-muted-foreground">Right arm augmented lead</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">✓</span>
-                    <span>Learn proper electrode placement for limb leads</span>
+                  <li className="flex items-start gap-3 group/item hover:translate-x-1 transition-transform">
+                    <span className="px-3 py-1 bg-accent/10 text-accent rounded-lg font-semibold shadow-sm group-hover/item:shadow-md transition-shadow">aVL</span>
+                    <span className="text-muted-foreground">Left arm augmented lead</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">✓</span>
-                    <span>Recognize normal ECG waveform patterns in augmented leads</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">✓</span>
-                    <span>Apply mathematical formulas to derive augmented leads from standard limb leads</span>
+                  <li className="flex items-start gap-3 group/item hover:translate-x-1 transition-transform">
+                    <span className="px-3 py-1 bg-destructive/10 text-destructive rounded-lg font-semibold shadow-sm group-hover/item:shadow-md transition-shadow">aVF</span>
+                    <span className="text-muted-foreground">Left foot augmented lead</span>
                   </li>
                 </ul>
-              </div>
-
-              {/* CTA Button */}
-              <div className="flex justify-center pt-4">
-                <Button
-                  onClick={() => navigate("/lab")}
-                  size="lg"
-                  className="text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all"
-                >
-                  Start Virtual Lab
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
               </div>
             </CardContent>
           </Card>
 
-          {/* Additional Info */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">About This Experiment</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-muted-foreground space-y-2">
-                <p>
-                  This virtual laboratory provides an interactive platform to learn and practice 
-                  ECG monitoring techniques specifically for augmented leads. These leads provide 
-                  crucial information about cardiac electrical activity from the frontal plane.
-                </p>
-                <p>
-                  The augmented leads (aVR, aVL, aVF) are derived mathematically from the standard 
-                  limb leads and offer unique perspectives on heart function, essential for 
-                  diagnosing various cardiac conditions.
-                </p>
-              </CardContent>
-            </Card>
+          {/* Learning Objectives */}
+          <Card className="glass-panel shadow-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 group overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <CardHeader className="relative z-10">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center mb-4 shadow-lg group-hover:shadow-xl transition-all group-hover:scale-110 glow-effect">
+                <Target className="h-7 w-7 text-white" />
+              </div>
+              <CardTitle className="text-2xl">Learning Objectives</CardTitle>
+              <CardDescription className="text-base">
+                Key skills you'll develop in this lab
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="relative z-10">
+              <ul className="space-y-3 text-sm">
+                {[
+                  "Understand the derivation of augmented leads from limb electrodes",
+                  "Master proper electrode placement techniques",
+                  "Recognize normal ECG patterns in each augmented lead",
+                  "Apply knowledge to clinical diagnostic scenarios"
+                ].map((objective, idx) => (
+                  <li key={idx} className="flex items-start gap-3 group/item hover:translate-x-1 transition-transform">
+                    <div className="h-7 w-7 rounded-xl bg-gradient-to-br from-success/20 to-success/10 flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm group-hover/item:shadow-md transition-all group-hover/item:scale-110">
+                      <CheckCircle2 className="h-4 w-4 text-success" />
+                    </div>
+                    <span className="text-muted-foreground">{objective}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Prerequisites</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span>Basic understanding of cardiac anatomy and physiology</span>
+          {/* Prerequisites */}
+          <Card className="glass-panel shadow-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 group overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <CardHeader className="relative z-10">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4 shadow-lg group-hover:shadow-xl transition-all group-hover:scale-110 glow-effect">
+                <BookOpen className="h-7 w-7 text-white" />
+              </div>
+              <CardTitle className="text-2xl">Prerequisites</CardTitle>
+              <CardDescription className="text-base">
+                What you should know before starting
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="relative z-10">
+              <ul className="space-y-3 text-sm">
+                {[
+                  "Basic understanding of cardiovascular anatomy",
+                  "Familiarity with electrical signals in the body",
+                  "Knowledge of standard ECG lead placement (recommended)",
+                  "Understanding of Einthoven's triangle concept"
+                ].map((prereq, idx) => (
+                  <li key={idx} className="flex items-start gap-3 group/item hover:translate-x-1 transition-transform">
+                    <div className="h-2 w-2 rounded-full bg-gradient-to-r from-primary to-accent mt-2.5 flex-shrink-0 shadow-sm group-hover/item:shadow-md transition-all group-hover/item:scale-150"></div>
+                    <span className="text-muted-foreground">{prereq}</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span>Familiarity with standard ECG waveforms (P, QRS, T waves)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span>Knowledge of electrical principles in biomedical instrumentation</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border mt-12 py-6 bg-card/50">
-        <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>Bio-Medical Instrumentation Virtual Laboratory</p>
-          <p className="mt-1">School of Bioengineering</p>
-        </div>
-      </footer>
+      {/* CTA Section */}
+      <section className="container mx-auto px-4 py-16 relative z-10">
+        <Card className="glass-panel shadow-2xl border-2 border-primary/30 overflow-hidden relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 animate-gradient bg-[length:200%_auto]"></div>
+          <CardContent className="py-16 text-center relative z-10">
+            <div className="max-w-2xl mx-auto space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
+                Ready to Begin?
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Start your journey into ECG monitoring and master augmented lead analysis
+              </p>
+              <Link to="/lab">
+                <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:shadow-2xl hover:scale-110 transition-all duration-300 text-lg px-12 py-7 shadow-xl glow-effect mt-4">
+                  Launch Virtual Lab
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
     </div>
   );
 };

@@ -201,4 +201,17 @@ All colors MUST be HSL.
       background-position: 200% 0;
     }
   }
+  
+  .animate-gradient {
+    animation: gradient-shift 8s ease infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 }
