@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path' // Path import is needed for resolve alias
-import componentTagger from 'lovable-tagger' // Component tagger import
+// The componentTagger import and conditional logic are removed to streamline the build process for CI/CD
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   // ⚠️ FINAL FIX: Set the base path to the repository name for GitHub Pages deployment.
   // The repository name is 'ecg-virtu-lab', which is required for sub-folder hosting.
   base: '/ecg-virtu-lab/', 
@@ -12,10 +12,12 @@ export default defineConfig(({ mode }) => ({
     host: '::',
     port: 8080,
   },
-  plugins: [react(), mode === 'development' && componentTagger()].filter(Boolean),
+  // Use a simpler plugin array for stability in CI/CD
+  plugins: [react()], 
   resolve: {
     alias: {
+      // NOTE: __dirname is only available when using defineConfig({ ... }) without the ({ mode }) arrow function.
       '@': path.resolve(__dirname, './src'),
     },
   },
-}))
+})
