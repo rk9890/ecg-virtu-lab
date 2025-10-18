@@ -12,10 +12,8 @@ export default defineConfig({
   },
   plugins: [react()], 
   resolve: {
-    // ⚠️ FINAL FIX: Removed alias configuration that was causing Node runtime errors.
-    // The default Vite configuration should be sufficient to find the main component.
+    // Alias configuration is removed for stability.
     alias: {
-      // NOTE: Alias configuration removed to stabilize build environment.
     },
   },
 })
